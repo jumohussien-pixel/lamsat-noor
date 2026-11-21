@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#121820" />
+  <link rel="icon" type="image/svg+xml" href="/assets/icon.svg" />
+  <title>فيديو شرح تطبيق لمسة نور (دقيقتان)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #121820;
+      --surface: #1a232e;
+      --surface-soft: #222e3c;
+      --border: #2d3c4d;
+      --text: #f6f9fc;
+      --muted: #b6c6d8;
+      --emerald: #34d399;
+      --gold: #fbbf24;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Tajawal", system-ui, sans-serif;
+      padding: 20px 16px 36px;
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .topbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      padding: 14px 18px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand img { width: 44px; height: 44px; border-radius: 12px; }
+    .brand h1 { margin: 0; font-size: 1.35rem; font-weight: 800; }
+    .brand p { margin: 0; font-size: 0.92rem; color: var(--muted); }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 10px 18px;
+      border-radius: 14px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      border: 2px solid var(--border);
+      background: var(--surface-soft);
+      color: var(--text);
+    }
+    .btn-primary {
+      background: var(--emerald);
+      border-color: var(--emerald);
+      color: #07150f;
+    }
+    .player-card {
+      background: #0a0e13;
+      border: 3px solid var(--emerald);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.45);
+    }
+    video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+    .chapters-card {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      padding: 18px;
+    }
+    .chapters-title {
+      margin: 0 0 12px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--gold);
+    }
+    .chapters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 10px;
+    }
+    .chapter-btn {
+      text-align: right;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .chapter-btn:hover {
+      border-color: var(--emerald);
+      color: var(--emerald);
+    }
+    .chapter-time {
+      color: var(--emerald);
+      font-weight: 800;
+      margin-left: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="topbar">
+      <div class="brand">
+        <img src="/assets/icon.svg" alt="شعار لمسة نور" />
+        <div>
+          <h1>فيديو شرح تطبيق «لمسة نور»</h1>
+          <p>شرح كامل بالصوت العربي لجميع مميزات التطبيق — المدة: دقيقتان (Full HD)</p>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn btn-primary" href="/">فتح تطبيق لمسة نور</a>
+        <a class="btn" href="/video/lamsat-noor-demo-ar.mp4" download="lamsat-noor-demo-ar.mp4">تحميل الفيديو MP4</a>
+      </div>
+    </header>
+
+    <div class="player-card">
+      <video id="demoVideo" controls playsinline preload="metadata" poster="/assets/icon.svg">
+        <source src="/video/lamsat-noor-demo-ar.mp4" type="video/mp4" />
+        متصفحك لا يدعم تشغيل الفيديو.
+      </video>
+    </div>
+
+    <section class="chapters-card" aria-label="فصول الفيديو الثمانية">
+      <h2 class="chapters-title">انتقل مباشرة لأي مشهد في الفيديو:</h2>
+      <div class="chapters-grid">
+        <button class="chapter-btn" type="button" data-seek="0"><span class="chapter-time">00:00</span>1. شاشة البداية وزر ابدأ</button>
+        <button class="chapter-btn" type="button" data-seek="15"><span class="chapter-time">00:15</span>2. تصميم الموبايل العمودي</button>
+        <button class="chapter-btn" type="button" data-seek="30"><span class="chapter-time">00:30</span>3. الكاميرا والليزر الصوتي</button>
+        <button class="chapter-btn" type="button" data-seek="43"><span class="chapter-time">00:43</span>4. الأشياء والألوان بالحواس</button>
+        <button class="chapter-btn" type="button" data-seek="60"><span class="chapter-time">01:00</span>5. التعرف على جميع أنواع الطعام</button>
+        <button class="chapter-btn" type="button" data-seek="76"><span class="chapter-time">01:16</span>6. تكرار الطفل ومكافأة النجوم</button>
+        <button class="chapter-btn" type="button" data-seek="92"><span class="chapter-time">01:32</span>7. درع الأمان والحماية من التوقف</button>
+        <button class="chapter-btn" type="button" data-seek="108"><span class="chapter-time">01:48</span>8. التجربة المباشرة على الموبايل</button>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const video = document.getElementById('demoVideo');
+    document.querySelectorAll('[data-seek]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        video.currentTime = Number(btn.dataset.seek) || 0;
+        video.play().catch(() => {});
+      });
+    });
+  </script>
+</body>
+</html>

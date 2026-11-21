@@ -4,10 +4,11 @@
  * Never caches /api/* requests.
  */
 
-const CACHE_NAME = 'lamsat-noor-v5';
+const CACHE_NAME = 'lamsat-noor-v6';
 const APP_SHELL = [
   '/',
   '/index.html',
+  '/video.html',
   '/styles.css',
   '/manifest.webmanifest',
   '/assets/icon.svg',

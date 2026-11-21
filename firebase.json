@@ -15,7 +15,6 @@
       "FIREBASE_DEPLOY_GUIDE.md",
       "firebase-debug.log",
       "firebase-debug.*.log",
-      "video/**",
       "video_production/**",
       "**/.*",
       "**/node_modules/**",

@@ -5,17 +5,18 @@
 **رفيق ذكي بالصوت والليزر الناطق للأطفال المكفوفين وضعاف البصر لاكتشاف الطعام والأشياء وألوانها بأمان ومتعة.**
 
 [![التطبيق المباشر](https://img.shields.io/badge/التجربة_المباشرة-lamsat--noor.web.app-f5a623?style=for-the-badge)](https://lamsat-noor.web.app)
-[![فيديو العرض](https://img.shields.io/badge/فيديو_العرض_بالعربية-2:03_Full_HD-2dd4bf?style=for-the-badge)](./video/lamsat-noor-demo-ar.mp4)
+[![فيديو العرض](https://img.shields.io/badge/شاهد_فيديو_العرض_مباشرة-2:03_Full_HD-2dd4bf?style=for-the-badge)](https://lamsat-noor.web.app/video.html)
 [![PWA](https://img.shields.io/badge/Mobile_PWA-Android_%26_iOS-121820?style=for-the-badge)](https://lamsat-noor.web.app)
 
 ---
 
-## 🔗 الروابط المباشرة (Live Demo & Showcase Video)
+## 🔗 الروابط المباشرة (Live Demo & Instant Video Player)
 
-- **التطبيق المباشر على الموبايل (Live Mobile PWA):** **[https://lamsat-noor.web.app](https://lamsat-noor.web.app)**
-- **فيديو العرض الرسمي بالذكاء الاصطناعي (العربية — `1920x1080` Full HD، المدة `2:03`):** **[`video/lamsat-noor-demo-ar.mp4`](./video/lamsat-noor-demo-ar.mp4)**
+- **📱 التطبيق المباشر على الموبايل (Live Mobile PWA):** **[https://lamsat-noor.web.app](https://lamsat-noor.web.app)**
+- **🎬 مشغل فيديو الشرح المباشر (يعمل بضغطة واحدة في المتصفح — `2:03` Full HD):** **[https://lamsat-noor.web.app/video.html](https://lamsat-noor.web.app/video.html)**
+- **📥 تحميل ملف الفيديو مباشرة (`4.5 MB` MP4):** **[https://lamsat-noor.web.app/video/lamsat-noor-demo-ar.mp4](https://lamsat-noor.web.app/video/lamsat-noor-demo-ar.mp4)** (أو من داخل المستودع: [`video/lamsat-noor-demo-ar.mp4`](./video/lamsat-noor-demo-ar.mp4))
 
-> لمشاهدة الفيديو مباشرة من GitHub، اضغط على الرابط أعلاه أو افتح الملف [`video/lamsat-noor-demo-ar.mp4`](./video/lamsat-noor-demo-ar.mp4) (بدقة `1920x1080` وتعليق صوتي عربي واضح).
+> 💡 **أسهل طريقة لتشغيل الفيديو:** اضغط على **[https://lamsat-noor.web.app/video.html](https://lamsat-noor.web.app/video.html)** ليفتح مشغل الفيديو العربي التفاعلي فوراً مع إمكانية التنقل بين المشاهد الـ 8 بضغطة زر.
 
 ---
 
@@ -108,7 +109,7 @@ npm start
 **Lamsat Noor (لمسة نور — "Touch of Light")** is an accessible, child-first Arabic Mobile PWA designed for blind and visually impaired children to independently explore food, everyday objects, and colors through voice, sound, and touch.
 
 - **Live Mobile PWA:** [https://lamsat-noor.web.app](https://lamsat-noor.web.app)
-- **2-Minute Arabic AI Showcase Video (`1920x1080`, `2:03`):** [`video/lamsat-noor-demo-ar.mp4`](./video/lamsat-noor-demo-ar.mp4)
+- **Instant Interactive Video Player (`1920x1080`, `2:03`):** [https://lamsat-noor.web.app/video.html](https://lamsat-noor.web.app/video.html) (or raw MP4: [`video/lamsat-noor-demo-ar.mp4`](./video/lamsat-noor-demo-ar.mp4))
 - **Core Capabilities:**
   - **Portrait Mobile PWA:** High-contrast RTL Arabic UI, installable on Android/iOS, screen wake lock, torch toggle, and offline shell caching.
   - **Audio-Haptic Sonar Laser:** Rear-camera live scanning guided by sonar audio cues and gentle haptic vibration.
