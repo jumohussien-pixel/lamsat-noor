@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#121820" />
+  <meta name="apple-mobile-web-app-title" content="لمسة نور" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" type="image/svg+xml" href="/assets/icon.svg" />
+  <link rel="apple-touch-icon" href="/assets/icon-192.png" />
+  <title>لمسة نور</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-stage">انتقل مباشرة إلى الكاميرا</a>
+
+  <!-- صفحة البداية: لمسة نور + شعار نور صغير + زر كبير «ابدأ» -->
+  <section id="welcomeScreen" class="welcome-screen" aria-label="صفحة بداية لمسة نور">
+    <div class="welcome-card">
+      <div class="welcome-brand">
+        <img class="welcome-logo" src="/assets/icon.svg" alt="شعار لمسة نور" width="84" height="84" />
+        <h1 class="welcome-title">لمسة نور</h1>
+        <p class="welcome-tagline">اكتشف الطعام والأشياء وألوانها بالصوت</p>
+      </div>
+
+      <button id="btnWelcomeStart" class="welcome-start-btn" type="button">
+        ابدأ
+      </button>
+
+      <p class="welcome-note">مُصمم بعناية للأطفال المكفوفين وضعاف البصر</p>
+    </div>
+  </section>
+
+  <!-- الشاشة الرئيسية للتطبيق (موبايل عمودي للأطفال) -->
+  <div id="mainApp" class="app-shell" hidden>
+    <header class="app-header">
+      <div class="header-top-row">
+        <div class="brand">
+          <img class="brand-logo" src="/assets/icon.svg" alt="" width="44" height="44" aria-hidden="true" />
+          <div>
+            <h2 class="brand-title">لمسة نور</h2>
+            <p class="brand-subtitle">الليزر الناطق الذكي للأطفال</p>
+          </div>
+        </div>
+
+        <div class="stars-badge" aria-label="عدد النجوم المكتسبة">
+          <span aria-hidden="true">★</span>
+          <span id="starsCount">0</span>
+        </div>
+      </div>
+
+      <div class="header-controls" role="toolbar" aria-label="إعدادات سريعة">
+        <button id="btnGoHome" class="control-btn" type="button">
+          الرئيسية
+        </button>
+        <button id="btnMute" class="control-btn" type="button" aria-pressed="false">
+          الصوت يعمل
+        </button>
+        <button id="btnTorch" class="control-btn control-btn-wide" type="button" aria-pressed="false" hidden>
+          الكشاف
+        </button>
+      </div>
+    </header>
+
+    <main id="main-stage" class="workspace">
+      <!-- الكاميرا الخلفية العمودية وشعاع الليزر -->
+      <section class="laser-stage-panel" aria-label="منطقة الكاميرا وشعاع الليزر">
+        <div class="viewport-frame" id="viewportFrame" data-state="IDLE">
+          <video id="videoFeed" playsinline autoplay muted aria-label="بث الكاميرا الخلفية المباشر"></video>
+          <canvas id="laserCanvas" aria-hidden="true"></canvas>
+
+          <!-- شاشة تفعيل الكاميرا داخل المساحة -->
+          <div class="stage-overlay" id="startOverlay">
+            <p class="overlay-hint">افتح الكاميرا الخلفية وضع أي طعام أو شيء أمام «لمسة نور».</p>
+            <button id="btnStartLaser" class="primary-action" type="button">
+              افتح الكاميرا الآن
+            </button>
+          </div>
+
+          <!-- مؤشر الحالة الصوتي والمرئي -->
+          <div class="state-pill" id="statePill" role="status" aria-live="polite">
+            <span class="state-indicator" aria-hidden="true"></span>
+            <span id="statusText">جاهز للتشغيل</span>
+          </div>
+        </div>
+
+        <button id="btnScanNow" class="scan-cta-btn" type="button" disabled>
+          امسح الآن
+        </button>
+      </section>
+
+      <!-- النتيجة والصوت وتكرار الطفل -->
+      <section class="companion-panel" aria-label="نتيجة لمسة نور والتفاعل الصوتي">
+        <div class="result-block" aria-live="polite" aria-atomic="true">
+          <div class="color-swatch-row">
+            <span class="color-swatch" id="colorSwatch" aria-hidden="true"></span>
+            <span class="color-name" id="colorNameLabel">بانتظار وضع شيء أمام الكاميرا</span>
+          </div>
+
+          <p class="spoken-sentence" id="spokenSentence">
+            ضع أي طعام أو شيء أمام الكاميرا أو اختر مثالاً للتجربة.
+          </p>
+
+          <p class="sensory-hint" id="sensoryHint">
+            عند رصد الشيء، ستنطق «لمسة نور» اسمه ولونه وتساعدك على تكراره.
+          </p>
+
+          <div class="speech-feedback" id="speechFeedbackBox" data-listening="false">
+            <div class="speech-feedback-head">
+              <span class="speech-feedback-label">تكرار الطفل:</span>
+              <span class="mic-indicator" id="micIndicator">الميكروفون مغلق</span>
+            </div>
+            <p class="child-speech-text" id="childSpeechText" aria-live="polite">—</p>
+
+            <div class="turn-actions" id="turnActions" hidden>
+              <p class="turn-hint">للمعلم أو ولي الأمر: إذا كرر الطفل ولم يلتقطه الميكروفون</p>
+              <button id="btnChildSaidRight" class="turn-btn turn-btn-ok" type="button">قالها صح</button>
+              <button id="btnSkipRepeat" class="turn-btn" type="button">تخطي</button>
+            </div>
+          </div>
+
+          <div class="companion-actions">
+            <button id="btnRepeatNow" class="secondary-action" type="button" disabled>
+              أعد النطق والاستماع
+            </button>
+            <button id="btnNextObject" class="secondary-action" type="button" disabled>
+              شيء جديد
+            </button>
+          </div>
+        </div>
+
+        <!-- أزرار التجربة السريعة للعرض في المسابقة -->
+        <div class="demo-bar" aria-label="أمثلة سريعة للتجربة والعرض">
+          <span class="demo-label">تجربة سريعة للعرض:</span>
+          <div class="demo-grid">
+            <button class="demo-chip" type="button" data-demo="spoon">ملعقة فضية</button>
+            <button class="demo-chip" type="button" data-demo="cup">كوب أزرق</button>
+            <button class="demo-chip" type="button" data-demo="apple">تفاحة حمراء</button>
+            <button class="demo-chip" type="button" data-demo="sandwich">شطيرة جبن</button>
+            <button class="demo-chip demo-chip-warn" type="button" data-demo="scissors">اختبار أمان (مقص)</button>
+          </div>
+        </div>
+
+        <!-- سجل اكتشافات اليوم (محفوظ تلقائياً) -->
+        <div class="history-block" aria-label="الأشياء التي اكتشفها البطل اليوم">
+          <div class="history-header">
+            <h3 class="history-title">اكتشافات اليوم</h3>
+            <span class="history-count" id="historyCount">0 أشياء</span>
+          </div>
+          <ul class="history-list" id="historyList">
+            <li class="history-empty">لم يتم اكتشاف أي شيء بعد.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>لمسة نور — رفيق الأطفال الذكي لاكتشاف العالم بالصوت.</p>
+    </footer>
+  </div>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
